@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Linq;
 namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
 {
     class Program
@@ -22,8 +22,53 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
 
         public static int FindDigit(string equation)
         {
-            // Add your code here.
-            throw new NotImplementedException();
+            string[] arr = equation.Split(new Char[] { '=', '*'});
+            if (arr[0].Contains('?')){
+                return CheckDigit(arr[0], arr[1],arr[2],arr[0].IndexOf('?'));
+            }
+            else if (arr[1].Contains('?'))
+            {
+                return CheckDigit(arr[1], arr[0], arr[2], arr[1].IndexOf('?'));
+            }
+            else {
+                return CheckDigit(arr[0], arr[1], arr[2], arr[2].IndexOf('?'), 1);
+            }
+        }
+
+        public static int CheckDigit(string a,string b,string c,int pos,int op=-1) {
+            if (op == 1)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (pos == 0 && i==0)
+                        continue;
+                    char[] CharArrayOfNumberWithSymbol = c.ToCharArray();
+                    CharArrayOfNumberWithSymbol[pos] = Convert.ToChar(i.ToString());
+                    string newstring = new string(CharArrayOfNumberWithSymbol);
+                    int x = Convert.ToInt32(newstring);
+                    if (Int32.Parse(b) * Int32.Parse(a) == x)
+                    {
+                        return i;
+                    }
+                }
+                return -1;
+            }
+            else {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (pos == 0 && i == 0)
+                        continue;
+                    char[] CharArrayOfNumberWithSymbol = a.ToCharArray();
+                    CharArrayOfNumberWithSymbol[pos] = Convert.ToChar(i.ToString());
+                    string newstring = new string(CharArrayOfNumberWithSymbol);
+                    int x = Convert.ToInt32(newstring);
+                    if (Int32.Parse(b) * x== Int32.Parse(c))
+                    {
+                        return i;
+                    }
+                }
+                return -1;
+            }
         }
     }
 }
