@@ -42,9 +42,9 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
                 {
                     if (pos == 0 && i==0)
                         continue;
-                    char[] ch = c.ToCharArray();
-                    ch[pos] = Convert.ToChar(i.ToString());
-                    string newstring = new string(ch);
+                    char[] CharArrayOfNumberWithSymbol = c.ToCharArray();
+                    CharArrayOfNumberWithSymbol[pos] = Convert.ToChar(i.ToString());
+                    string newstring = new string(CharArrayOfNumberWithSymbol);
                     int x = Convert.ToInt32(newstring);
                     if (Int32.Parse(b) * Int32.Parse(a) == x)
                     {
@@ -58,9 +58,9 @@ namespace Tavisca.Bootcamp.LanguageBasics.Exercise1
                 {
                     if (pos == 0 && i == 0)
                         continue;
-                    char[] ch = a.ToCharArray();
-                    ch[pos] = Convert.ToChar(i.ToString());
-                    string newstring = new string(ch);
+                    char[] CharArrayOfNumberWithSymbol = a.ToCharArray();
+                    CharArrayOfNumberWithSymbol[pos] = Convert.ToChar(i.ToString());
+                    string newstring = new string(CharArrayOfNumberWithSymbol);
                     int x = Convert.ToInt32(newstring);
                     if (Int32.Parse(b) * x== Int32.Parse(c))
                     {
